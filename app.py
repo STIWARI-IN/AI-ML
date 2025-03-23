@@ -3,8 +3,7 @@ import os
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
-
-#from secret_key import groq_api_key
+import streamlit as st
 
 groq_api_key = st.secrets['GROQ_SECRET_KEY']
 os.environ['GROQ_API_KEY']=groq_api_key
