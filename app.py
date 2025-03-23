@@ -6,7 +6,7 @@ from langchain.chains import SequentialChain
 
 #from secret_key import groq_api_key
 
-groq_api_key=st.secrets['GROQ_API_KEY']
+groq_api_key = st.secrets['GROQ_SECRET_KEY']
 os.environ['GROQ_API_KEY']=groq_api_key
 
 from langchain_groq import ChatGroq
