@@ -138,36 +138,20 @@ st.markdown("""
 st.markdown("<h1 class='title'>AI Based Hospital Advisor 🏥</h1>", unsafe_allow_html=True)
 st.markdown("<p class='description'>Find the best hospitals for treatment in your desired place</p>", unsafe_allow_html=True)
 
-# Initialize session state for input_user_text if not already present
-if "input_user_text" not in st.session_state:
-    st.session_state.input_user_text = ""
-
 # Sidebar input for place
-input_user_text = st.sidebar.text_input('Enter the Place for Treatment! ✈️', value=st.session_state.input_user_text)
+input_user_text = st.sidebar.text_input('Enter the Place for Treatment! ✈️')
 
-# Creating two columns for "Search" and "Clear Search" buttons
-col1, col2 = st.sidebar.columns([1, 1])
-
-# "Search" Button
-with col1:
-    if st.button('Search'):
-        if input_user_text:
-            # Get the hospital recommendations based on the place entered
-            response = hospital_advisor(input_user_text)
-            
-            # Display the result: Place name and hospital list
-            if response["place_name"] == "Invalid Place":
-                st.error(response["best_hospital"])
-            else:
-                st.header(f"Best Hospitals in {response['place_name']}")  # Primary Header for the results
-                list_item = response['best_hospital'].split(',')
-                st.write('**List of Hospitals (Private & Government)**')  # Optional subheader
-                for item in list_item:
-                    st.write(item)
-        else:
-            st.warning('Please enter a valid place for treatment.')  # Warning for empty input
-
-# "Clear Search" Button
-with col2:
-    if st.button('Clear Search'):
-        st.session_state.input_user_text = ""  # Reset the input text
+# Handle search button press
+if st.sidebar.button('Search'):
+    if input_user_text:
+        # Get the hospital recommendations based on the place entered
+        response = hospital_advisor(input_user_text)
+        
+        # Display the result: Place name and hospital list
+        st.header(f"Best Hospitals in {response['place_name']}")
+        list_item = response['best_hospital'].split(',')
+        st.write('**List of Hospitals (Private & Government)**')
+        for item in list_item:
+            st.write(item)
+    else:
+        st.warning('Please enter a valid place for treatment.')
