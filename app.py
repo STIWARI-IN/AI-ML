@@ -45,8 +45,8 @@ if __name__ == '__main__':
 
 
 import streamlit as st
-st.title('Travel Advisor 🛣️')
-input_user_text=st.sidebar.text_input('Enter State Name Where You Want To Visit!')
+st.title('Travel Advisor 🌍')
+input_user_text=st.sidebar.text_input('Enter Place Where You Want To Visit! ✈️')
 st.sidebar.button('search')
 
 
