@@ -36,7 +36,7 @@ def hospital_advisor(place):
     output_variables=['place_name','best_hospital']
     )
 
-    result=seq_chain({'State':State})
+    result=seq_chain({'place':place})
     return result
 
 if __name__ == '__main__':
