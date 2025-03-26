@@ -52,7 +52,7 @@ st.sidebar.button('search')
 if input_user_text:
     response = hospital_advisor(input_user_text)
     st.header(response['place_name'])
-    list_item=response['sight_seeing_items'].split(',')
+    list_item=response['best_hospital'].split(',')
     st.write('**List of All Hospitals**')
     for item in list_item:
         st.write(item)
