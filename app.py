@@ -44,17 +44,17 @@ st.markdown("""
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #7F7FD5, #86A8E7, #91EAE4);
-            color: #333;
+            background: linear-gradient(135deg, #5A3F37, #D44D62, #F8A6C3);
+            color: #fff;
         }
         .sidebar .sidebar-content {
-            background-color: #ffffff;
+            background-color: #3A2D2F;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border-radius: 8px;
         }
         .title {
-            color: #fff;
+            color: #FFF;
             font-size: 50px;
             font-weight: bold;
             text-align: center;
@@ -64,23 +64,24 @@ st.markdown("""
         .description {
             text-align: center;
             font-size: 20px;
-            color: #fff;
+            color: #FFF;
             margin-top: 10px;
         }
         .input-box {
-            background-color: #ffffff;
-            border: 2px solid #ff6347;
+            background-color: #F6C4D1;
+            border: 2px solid #D44D62;
             padding: 12px;
             font-size: 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             width: 100%;
+            color: #5A3F37;
         }
         .input-box:focus {
-            border: 2px solid #8a2be2;
+            border: 2px solid #8A2BE2;
             outline: none;
         }
         .button {
-            background-color: #4CAF50;
+            background-color: #FF6F61;
             color: white;
             border-radius: 8px;
             padding: 12px 25px;
@@ -90,19 +91,19 @@ st.markdown("""
             transition: background-color 0.3s ease;
         }
         .button:hover {
-            background-color: #45a049;
+            background-color: #F44336;
         }
         .result-card {
-            background-color: white;
+            background-color: #D44D62;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             margin-top: 30px;
             animation: fadeIn 0.5s ease-out;
         }
         .result-card h4 {
             font-size: 26px;
-            color: #2e8b57;
+            color: #FFF;
             text-align: center;
             font-weight: bold;
         }
@@ -113,7 +114,7 @@ st.markdown("""
         .result-card ul li {
             margin: 10px 0;
             font-size: 18px;
-            color: #555;
+            color: #FFF;
             text-align: center;
         }
         @keyframes fadeIn {
@@ -135,7 +136,7 @@ st.markdown("""
             padding: 12px;
             font-size: 16px;
             border-radius: 12px;
-            border: 2px solid #ff6347;
+            border: 2px solid #D44D62;
             outline: none;
             margin-right: 10px;
         }
