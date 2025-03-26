@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
 import streamlit as st
 st.title('AI Based Hospital Advisor 🏥')
-input_user_text=st.sidebar.text_input('Enter the Place for Treatment!! ✈️')
+input_user_text=st.sidebar.text_input('Enter the Place for Treatment! ✈️')
 st.sidebar.button('search')
 
 
