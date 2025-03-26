@@ -44,42 +44,50 @@ st.markdown("""
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            background: linear-gradient(135deg, #7F7FD5, #86A8E7, #91EAE4);
+            color: #333;
         }
         .sidebar .sidebar-content {
-            background-color: #f0f8ff;
+            background-color: #ffffff;
             padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         .title {
-            color: #2e8b57;
-            font-size: 40px;
+            color: #fff;
+            font-size: 50px;
             font-weight: bold;
             text-align: center;
             margin-top: 50px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
         }
         .description {
             text-align: center;
-            font-size: 18px;
-            color: #555;
+            font-size: 20px;
+            color: #fff;
+            margin-top: 10px;
         }
         .input-box {
-            background-color: #ffebcd;
+            background-color: #ffffff;
             border: 2px solid #ff6347;
             padding: 12px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 10px;
+            width: 100%;
         }
         .input-box:focus {
             border: 2px solid #8a2be2;
+            outline: none;
         }
         .button {
             background-color: #4CAF50;
             color: white;
-            border-radius: 5px;
-            padding: 10px 20px;
+            border-radius: 8px;
+            padding: 12px 25px;
             font-size: 18px;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .button:hover {
             background-color: #45a049;
@@ -88,12 +96,15 @@ st.markdown("""
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease-out;
         }
         .result-card h4 {
-            font-size: 24px;
+            font-size: 26px;
             color: #2e8b57;
+            text-align: center;
+            font-weight: bold;
         }
         .result-card ul {
             list-style-type: none;
@@ -101,8 +112,32 @@ st.markdown("""
         }
         .result-card ul li {
             margin: 10px 0;
-            font-size: 16px;
+            font-size: 18px;
             color: #555;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .search-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .search-section input {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: 2px solid #ff6347;
+            outline: none;
+            margin-right: 10px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -114,7 +149,6 @@ st.markdown("<p class='description'>Find famous sightseeing places based on your
 # Sidebar with input and buttons
 input_user_text = st.sidebar.text_input('Enter Place Where You Want To Visit! ✈️', key='place_input', placeholder='E.g., Punjab, Goa, Paris')
 search_button = st.sidebar.button('Search', key='search_button', help="Click to find famous places to visit")
-clear_button = st.sidebar.button('Clear Search', key='clear_button', help="Clear the search and start over")
 
 # Functionality for Search Button
 if search_button and input_user_text:
@@ -124,9 +158,3 @@ if search_button and input_user_text:
     for item in list_item:
         st.markdown(f"<li>{item}</li>", unsafe_allow_html=True)
     st.markdown("</ul></div>", unsafe_allow_html=True)
-
-# Functionality for Clear Button
-if clear_button:
-    st.session_state['place_input'] = ""  # Reset the input field in session state
-    st.experimental_rerun()  # Rerun the app to clear the results
-
