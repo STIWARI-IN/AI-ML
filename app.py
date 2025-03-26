@@ -138,8 +138,16 @@ st.markdown("""
 st.markdown("<h1 class='title'>AI Based Hospital Advisor 🏥</h1>", unsafe_allow_html=True)
 st.markdown("<p class='description'>Find the best hospitals for treatment in your desired place</p>", unsafe_allow_html=True)
 
+# Initialize session state for input_user_text if not already present
+if "input_user_text" not in st.session_state:
+    st.session_state.input_user_text = ""
+
 # Sidebar input for place
-input_user_text = st.sidebar.text_input('Enter the Place for Treatment! ✈️')
+input_user_text = st.sidebar.text_input('Enter the Place for Treatment! ✈️', value=st.session_state.input_user_text)
+
+# Button to clear the input text
+if st.sidebar.button('Clear Search'):
+    st.session_state.input_user_text = ""  # Reset the input text
 
 # Handle search button press
 if st.sidebar.button('Search'):
@@ -148,10 +156,13 @@ if st.sidebar.button('Search'):
         response = hospital_advisor(input_user_text)
         
         # Display the result: Place name and hospital list
-        st.header(f"Best Hospitals in {response['place_name']}")
-        list_item = response['best_hospital'].split(',')
-        st.write('**List of Hospitals (Private & Government)**')
-        for item in list_item:
-            st.write(item)
+        if response["place_name"] == "Invalid Place":
+            st.error(response["best_hospital"])
+        else:
+            st.header(f"Best Hospitals in {response['place_name']}")  # Primary Header for the results
+            list_item = response['best_hospital'].split(',')
+            st.write('**List of Hospitals (Private & Government)**')  # Optional subheader
+            for item in list_item:
+                st.write(item)
     else:
-        st.warning('Please enter a valid place for treatment.')
+        st.warning('Please enter a valid place for treatment.')  # Warning for empty input
