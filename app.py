@@ -28,12 +28,12 @@ def hospital_advisor(Place):
     template= 'Suggest some famous hospital in {state_name}. Provide all private and Government hospital separately'
     )
 
-    items_chain=LLMChain(llm=llm,prompt=prompt_template_items, output_key='hospitals')
+    items_chain=LLMChain(llm=llm,prompt=prompt_template_items, output_key='hospital')
 
     seq_chain = SequentialChain(
     chains=[name_chain, items_chain],
     input_variables=['place'],
-    output_variables=['place_name','hospitals']
+    output_variables=['place_name','hospital']
     )
 
     result=seq_chain({'State':State})
