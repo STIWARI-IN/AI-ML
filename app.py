@@ -16,7 +16,7 @@ def hospital_advisor(Place):
    
     prompt_template_name = PromptTemplate(
     input_variables=['place'],
-    template= 'I want to go {State} for medical treatment'
+    template= 'I want to go {place} for medical treatment'
     )
    
 
