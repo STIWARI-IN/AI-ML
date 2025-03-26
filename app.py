@@ -12,7 +12,7 @@ llm=ChatGroq(model='llama3-8b-8192',temperature=0)
 
 
 
-def hospital_advisor(Place):
+def hospital_advisor(place):
    
     prompt_template_name = PromptTemplate(
     input_variables=['place'],
