@@ -16,7 +16,7 @@ def travel_advisor(State):
    
     prompt_template_name = PromptTemplate(
     input_variables=['State'],
-    template= 'I want to travel {State}'
+    template= 'I want to travel {State} for medical treatment'
     )
    
 
