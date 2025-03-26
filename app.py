@@ -45,7 +45,98 @@ def hospital_advisor(place):
 # Streamlit UI code
 st.set_page_config(page_title="Hospital Advisor", page_icon="🏥", layout="wide")
 
-st.title('AI Based Hospital Advisor 🏥')
+# Custom CSS for light theme background image
+st.markdown("""
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f5;  /* Light gray background for the light theme */
+            color: #333;  /* Dark text for contrast */
+        }
+        .title {
+            color: #333;
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
+        }
+        .description {
+            text-align: center;
+            font-size: 20px;
+            color: #555;
+            margin-top: 10px;
+        }
+        .input-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #007bff;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            width: 100%;
+            color: #333;
+        }
+        .input-box:focus {
+            border: 2px solid #0056b3;
+            outline: none;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .result-card {
+            background-color: rgba(0, 123, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+        .result-card h4 {
+            font-size: 26px;
+            color: #FFF;
+            text-align: center;
+            font-weight: bold;
+        }
+        .result-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .result-card ul li {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #FFF;
+            text-align: center;
+        }
+        .search-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .search-section input {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: 2px solid #007bff;
+            outline: none;
+            margin-right: 10px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Title and description
+st.markdown("<h1 class='title'>AI Based Hospital Advisor 🏥</h1>", unsafe_allow_html=True)
+st.markdown("<p class='description'>Find the best hospitals for treatment in your desired place</p>", unsafe_allow_html=True)
 
 # Sidebar input for place
 input_user_text = st.sidebar.text_input('Enter the Place for Treatment! ✈️')
