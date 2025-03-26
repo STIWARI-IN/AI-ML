@@ -12,46 +12,46 @@ llm=ChatGroq(model='llama3-8b-8192',temperature=0)
 
 
 
-def travel_advisor(State):
+def hospital_advisor(Place):
    
     prompt_template_name = PromptTemplate(
-    input_variables=['State'],
-    template= 'I want to travel {State} for medical treatment'
+    input_variables=['place'],
+    template= 'I want to go {State} for medical treatment'
     )
    
 
 
-    name_chain=LLMChain(llm=llm, prompt=prompt_template_name, output_key='state_name')
+    name_chain=LLMChain(llm=llm, prompt=prompt_template_name, output_key='place_name')
 
     prompt_template_items = PromptTemplate(
-    input_variables=['state_name'],
-    template= 'Suggest some famous hospital {state_name}. Provide all private and Government hospital separately'
+    input_variables=['place_name'],
+    template= 'Suggest some famous hospital in {state_name}. Provide all private and Government hospital separately'
     )
 
-    items_chain=LLMChain(llm=llm,prompt=prompt_template_items, output_key='sight_seeing_items')
+    items_chain=LLMChain(llm=llm,prompt=prompt_template_items, output_key='hospitals')
 
     seq_chain = SequentialChain(
     chains=[name_chain, items_chain],
-    input_variables=['State'],
-    output_variables=['state_name','sight_seeing_items']
+    input_variables=['place'],
+    output_variables=['place_name','hospitals']
     )
 
     result=seq_chain({'State':State})
     return result
 
 if __name__ == '__main__':
-    print(travel_advisor('Punjab'))
+    print(hospital_advisor('Punjab'))
 
 
 import streamlit as st
-st.title('AI Based Hospital Advisor')
-input_user_text=st.sidebar.text_input('Enter Place Where You Want To Visit For Treatment! ✈️')
+st.title('AI Based Hospital Advisor 🏥')
+input_user_text=st.sidebar.text_input('Enter the Place for Treatment!! ✈️')
 st.sidebar.button('search')
 
 
 if input_user_text:
     response = travel_advisor(input_user_text)
-    st.header(response['state_name'])
+    st.header(response['place_name'])
     list_item=response['sight_seeing_items'].split(',')
     st.write('**List of All Hospitals**')
     for item in list_item:
