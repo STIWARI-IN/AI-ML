@@ -25,7 +25,7 @@ def travel_advisor(State):
 
     prompt_template_items = PromptTemplate(
     input_variables=['state_name'],
-    template= 'Suggest some famous sight seeing for {state_name}. Return it as a comma separated'
+    template= 'Suggest some famous hospital {state_name}. Provide all private and Government hospital separately'
     )
 
     items_chain=LLMChain(llm=llm,prompt=prompt_template_items, output_key='sight_seeing_items')
@@ -44,8 +44,8 @@ if __name__ == '__main__':
 
 
 import streamlit as st
-st.title('Travel Advisor 🌍')
-input_user_text=st.sidebar.text_input('Enter Place Where You Want To Visit! ✈️')
+st.title('AI Based Hospital Advisor')
+input_user_text=st.sidebar.text_input('Enter Place Where You Want To Visit For Treatment! ✈️')
 st.sidebar.button('search')
 
 
@@ -53,6 +53,6 @@ if input_user_text:
     response = travel_advisor(input_user_text)
     st.header(response['state_name'])
     list_item=response['sight_seeing_items'].split(',')
-    st.write('**Famous Sight Seeing Places**')
+    st.write('**List of All Hospitals**')
     for item in list_item:
         st.write(item)
